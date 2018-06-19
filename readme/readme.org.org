@@ -1,0 +1,61 @@
+# Created 2018-06-19 Tue 11:18
+#+TITLE: imgprocess readme
+#+AUTHOR: conao
+
+* System Requirements
+下記環境で動作確認をしました。
+#+BEGIN_SRC shell
+  $ python -V
+  Python 3.6.5
+  
+  $ pip freeze
+  ...
+  numpy==1.14.4
+  opencv-python==3.4.1.15
+  
+  $ brew config
+  HOMEBREW_VERSION: 1.6.8
+  ORIGIN: https://github.com/Homebrew/brew
+  HEAD: 3081390ff845a6172b9004cf404c3e028e3be745
+  Last commit: 24 hours ago
+  Core tap ORIGIN: https://github.com/Homebrew/homebrew-core
+  Core tap HEAD: 8fdf00c3de11f397ac5d109b7f5667c2334385e9
+  Core tap last commit: 59 minutes ago
+  HOMEBREW_PREFIX: /usr/local
+  CPU: quad-core 64-bit broadwell
+  Homebrew Ruby: 2.3.3 => /System/Library/Frameworks/Ruby.framework/Versions/2.3/usr/bin/ruby
+  Clang: 9.1 build 902
+  Git: 2.17.0 => /usr/local/bin/git
+  Curl: 7.54.0 => /usr/bin/curl
+  Java: 10.0.1
+  macOS: 10.13.4-x86_64
+  CLT: 9.4.0.0.1.1526532315
+  Xcode: 9.4
+  XQuartz: 2.7.11 => /opt/X11
+#+END_SRC
+* Usage
+#+BEGIN_SRC shell
+  $ python capture.py
+#+END_SRC
+
+上記コマンドにより起動します。Macの場合、内蔵カメラが捉えた画像を表示します。
+* Source
+#+CAPTION: capture.py
+#+BEGIN_SRC python
+  import cv2
+  
+  cap = cv2.VideoCapture(0)
+  
+  while True:
+      # Capture frame-by-frame
+      ret, frame = cap.read()
+  
+      # Display the resulting frame
+      cv2.imshow('frame', frame)
+      if cv2.waitKey(1) == 27:    # exit push escape key(27)
+          break
+  
+  # When everything done, release the capture
+  cap.release()
+  cv2.destroyAllWindows()
+#+END_SRC
