@@ -33,11 +33,11 @@
   XQuartz: 2.7.11 => /opt/X11
 #+END_SRC
 * Usage
-- capture.py
-  #+BEGIN_SRC shell
-    $ python capture.py
-  #+END_SRC
+#+BEGIN_SRC shell
+  $ python capture.py
+#+END_SRC
 
-  上記コマンドにより起動します。Macの場合、内蔵カメラが捉えた画像を表示します。
-
-  
+上記コマンドにより起動します。Macの場合、内蔵カメラが捉えた画像を表示します。
+* Source
+#+caption: capture.py
+#+include: ../capture.py src python
